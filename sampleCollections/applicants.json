@@ -1,0 +1,97 @@
+{{
+  "_id": "14032",
+  "username": "totesMcGoats",
+  "jobSeeker": {
+    "firstName": "Gary",
+    "lastName": "Uitsburg"
+  },
+  "dateOfBirth": "09/12/1989",
+  "email": "totesMcGoats@gmail.com",
+  "citizen": "true",
+  "skillBoxes": {
+    "plumbing": "false",
+    "microsoftWord": "false",
+    "microsoftExcel": "false",
+    "prgrmLang": {
+      "java": "true",
+      "sql": "false",
+      "python": "true",
+      "go": "false"
+    }
+  },
+  "trainingVideos": {
+    "trainingVid1": "false",
+    "trainingVid2": "false",
+    "trainingVid3": "true"
+  },
+  "resume": "blah.pdf",
+  "vicinity": {
+    "city": "Detroit",
+    "state": "Michigan"
+  }
+},
+{
+  "_id": "14032",
+  "username": "finkleburg",
+  "jobSeeker": {
+    "firstName": "Snake",
+    "lastName": "Jailbird"
+  },
+  "dateOfBirth": "06/23/1978",
+  "email": "jailbird@gmail.com",
+  "citizen": "true",
+  "skillBoxes": {
+    "plumbing": "true",
+    "microsoftWord": "true",
+    "microsoftExcel": "false",
+    "prgrmLang": {
+      "java": "true",
+      "sql": "true",
+      "python": "true",
+      "go": "true"
+    }
+  },
+  "trainingVideos": {
+    "trainingVid1": "false",
+    "trainingVid2": "false",
+    "trainingVid3": "true"
+  },
+  "resume": "jailbird.pdf",
+  "vicinity": {
+    "city": "Atlanta",
+    "state": "Georgia"
+  }
+},
+
+{
+  "_id": "152",
+  "username": "choleric",
+  "jobSeeker": {
+    "firstName": "Hans",
+    "lastName": "Moleman"
+  },
+  "dateOfBirth": "06/21/1928",
+  "email": "blindAsABat@gmail.com",
+  "citizen": "true",
+  "skillBoxes": {
+    "plumbing": "false",
+    "microsoftWord": "false",
+    "microsoftExcel": "false",
+    "prgrmLang": {
+      "java": "false",
+      "sql": "false",
+      "python": "false",
+      "go": "false"
+    }
+  },
+  "trainingVideos": {
+    "trainingVid1": "false",
+    "trainingVid2": "true",
+    "trainingVid3": "false"
+  },
+  "resume": "deafAsWell.pdf",
+  "vicinity": {
+    "city": "Charlotte",
+    "state": "Wyoming"
+  }
+}}
