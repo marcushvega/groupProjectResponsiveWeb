@@ -1,25 +1,15 @@
-{{
-  "_id": "66956",
-  "description": "Come work at MacRonald's",
-  "openings": "2",
-  "hoursPerWeek": "29",
-  "jobSkills": {
-    "plumbing": "false",
-    "microsoftWord": "false",
-    "microsoftExcel": "false",
-    "prgmLang": {
-      "java": "false",
-      "sql": "false",
-      "python": "false",
-      "go": "false"
-    }
-  },
-  "trainingReq": {
-    "trainingVid1": "false",
-    "trainingVid2": "false",
-    "trainingVid3": "false"
-  },
-  "startDate": "11/15/2017",
-  "drug": "false",
-  "jobType": "permanent"
-}}
+{
+   "_id": "1001",
+   "jobDesc": "you'll be makin' many a poster",
+   "openings": 2,
+   "type": {
+      "fullTime": false,
+      "partTime": true,
+      "temporary": true,
+      "contract": false
+   },
+   "skills": null,
+   "certs": null,
+   "startDate": "12/16/2017",
+   "drugTest": "blood"[D test"
+}

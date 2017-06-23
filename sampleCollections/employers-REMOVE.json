@@ -1,0 +1,48 @@
+{
+  "_id": "<ObjectId1>",
+  "username": "macManager",
+  "companyName": "macRonalds",
+  "hiringContact": "Horace McGriddleson",
+  "role": "Hiring Manager",
+  "numPos": "3",
+  "vicinity": {
+    "city": "Detroit",
+    "state": "Michigan"
+  }
+},
+{
+  "_id": "2",
+  "username": "kingManager",
+  "companyName": "DogKing",
+  "hiringContact": "Horace McHorason",
+  "role": "Hiring Manager",
+  "numPos": "1",
+  "vicinity": {
+    "city": "Grayling",
+    "state": "Michigan"
+  }
+},
+{
+  "_id": "14",
+  "username": "liquidManager",
+  "companyName": "Liquid Web",
+  "hiringContact": "Horace McDingDong",
+  "role": "Manager",
+  "numPos": "3",
+  "vicinity": {
+    "city": "Lansing",
+    "state": "Michigan"
+  }
+},
+{
+  "_id": "14032",
+  "username": "pointManager",
+  "companyName": "Pointivo",
+  "hiringContact": "Horace McLaurence",
+  "role": "Head of Office",
+  "numPos": "1",
+  "vicinity": {
+    "city": "Atlanta",
+    "state": "Georgia"
+  }
+}

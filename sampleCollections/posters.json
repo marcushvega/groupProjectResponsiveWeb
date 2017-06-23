@@ -1,0 +1,13 @@
+{
+  "_id": "66956",
+  "firstName": "Posty",
+  "lastName": "McPostyFace",
+  "companyName": "Posters4All",
+  "role": "Hiring Doodad",
+  "address": "123 Box Lane, Alabama Township, Florida",
+  "contactInformation": {
+      "workPhone": "899-023-1889",
+      "cellPhone": "124-990-8787",
+      "email": "PMcPostyFace@Posters4All.net"
+  }
+}

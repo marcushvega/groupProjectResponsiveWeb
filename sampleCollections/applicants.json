@@ -1,14 +1,10 @@
 {{
   "_id": "14032",
-  "username": "totesMcGoats",
-  "jobSeeker": {
-    "firstName": "Gary",
-    "lastName": "Uitsburg"
-  },
+  "firstName": "Gary",
+  "lastName": "Uitsburg",
   "dateOfBirth": "09/12/1989",
   "email": "totesMcGoats@gmail.com",
-  "citizen": "true",
-  "skillBoxes": {
+  "skills": {
     "plumbing": "false",
     "microsoftWord": "false",
     "microsoftExcel": "false",
@@ -19,28 +15,25 @@
       "go": "false"
     }
   },
-  "trainingVideos": {
+  "completedTrainings": {
     "trainingVid1": "false",
     "trainingVid2": "false",
     "trainingVid3": "true"
   },
   "resume": "blah.pdf",
   "vicinity": {
+    "address": "123 Raspberry Lane",
     "city": "Detroit",
     "state": "Michigan"
   }
 },
 {
   "_id": "14032",
-  "username": "finkleburg",
-  "jobSeeker": {
-    "firstName": "Snake",
-    "lastName": "Jailbird"
-  },
+  "firstName": "Snake",
+  "lastName": "Jailbird",
   "dateOfBirth": "06/23/1978",
   "email": "jailbird@gmail.com",
-  "citizen": "true",
-  "skillBoxes": {
+  "skills": {
     "plumbing": "true",
     "microsoftWord": "true",
     "microsoftExcel": "false",
@@ -51,28 +44,24 @@
       "go": "true"
     }
   },
-  "trainingVideos": {
+  "completedTrainings": {
     "trainingVid1": "false",
     "trainingVid2": "false",
     "trainingVid3": "true"
   },
   "resume": "jailbird.pdf",
   "vicinity": {
+    "address": "456 Okra Avenue",
     "city": "Atlanta",
     "state": "Georgia"
   }
 },
-
 {
   "_id": "152",
-  "username": "choleric",
-  "jobSeeker": {
-    "firstName": "Hans",
-    "lastName": "Moleman"
-  },
+  "firstName": "Hans",
+  "lastName": "Moleman",
   "dateOfBirth": "06/21/1928",
   "email": "blindAsABat@gmail.com",
-  "citizen": "true",
   "skillBoxes": {
     "plumbing": "false",
     "microsoftWord": "false",
@@ -84,13 +73,14 @@
       "go": "false"
     }
   },
-  "trainingVideos": {
+  "completedTrainings": {
     "trainingVid1": "false",
     "trainingVid2": "true",
     "trainingVid3": "false"
   },
   "resume": "deafAsWell.pdf",
   "vicinity": {
+    "address": "009 Moleman Street",
     "city": "Charlotte",
     "state": "Wyoming"
   }
