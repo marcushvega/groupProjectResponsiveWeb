@@ -1,0 +1,32 @@
+{
+    "seekerId":"the id"
+    "firstName":"client's first name",
+    "lastName":"client's last name",
+    "email":"client's email",
+    "dob":"date of birth of applicant",	
+    "skills":"array of skills applicant has", 
+    "completedTrainings":"videos applicant has watched",
+    "resume":"applicant's resume",
+    "address":"applicant's address"
+}
+
+{
+    "posterId":"the id",
+    "firstName":"poster's first name",
+    "lastName":"poster's last name",
+    "companyName":"company poster represents, if any, could be looking for freelance workers for small projects",
+    "role":"relationships to job and/or company (eg manager, ceo, etc)",
+    "address":"where poster works out of",
+    "contactInformation":{"workPhone":"phone number","cellPhone":"cell phone number","email":"email adress"} (any or all could be null)
+}
+
+{
+    "jobId":"the id",
+    "jobDesc":"description of the job",
+    "openings":"number of openings avaiable for the job",
+    "type":{"fullTime":"true/false","partTime":"true/false","temporary":"true/false","contract":"true/false"},
+    "skills":"array of preferred skills",
+    "certs":"degrees or certifications desired/preferred",
+    "startDate":"potential start date for job",
+    "drugTest":"drug testing policy",
+}
