@@ -20,8 +20,8 @@ cd inneed (switch into the project's directory)
 
 npm install (install dependencies.. may or may not be needed after cloning repo)
 
-DEBUG=myapp:* npm start (LINUX/MAC START COMMAND)
+DEBUG=inneed:* npm start (LINUX/MAC START COMMAND)
 
-set DEBUG=myapp:* & npm start (WINDOWS START COMMAND)
+set DEBUG=inneed:* & npm start (WINDOWS START COMMAND)
 
 App should now be viewable at http://localhost:3000/
