@@ -1,0 +1,21 @@
+{
+  "name": "inneed-app",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    ""
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {},
+  "resolutions": {
+    "webcomponentsjs": "^0.7.24"
+  }
+}
