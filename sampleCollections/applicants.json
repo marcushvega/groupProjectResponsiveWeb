@@ -4,6 +4,7 @@
   "lastName": "Uitsburg",
   "dateOfBirth": "09/12/1989",
   "email": "totesMcGoats@gmail.com",
+  "password":"someString",
   "skills": {
     "plumbing": "false",
     "microsoftWord": "false",
