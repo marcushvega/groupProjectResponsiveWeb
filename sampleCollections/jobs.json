@@ -1,15 +1,19 @@
 {
-   "_id": "1001",
-   "jobDesc": "you'll be makin' many a poster",
-   "openings": 2,
-   "type": {
-      "fullTime": false,
-      "partTime": true,
-      "temporary": true,
-      "contract": false
-   },
-   "skills": null,
-   "certs": null,
-   "startDate": "12/16/2017",
-   "drugTest": "blood"[D test"
+
+    "jobId":integer,
+
+    "jobDesc":"String",
+
+    "openings":integer,
+
+    "type":{"fullTime":"true/false","partTime":"true/false","temporary":"true/false","contract":"true/false"},
+
+    "skills":[array],
+
+    "certs":[array],
+
+    "startDate":"String",
+
+    "drugTest":"String",
+
 }
