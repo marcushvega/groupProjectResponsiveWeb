@@ -33,7 +33,7 @@ var port  = process.env.PORT || 3000;
 // })
 
 app.use(express.static(__dirname +'/public'));
-app.use(express.static(__dirname + '/bower_components'));
+app.use(express.static(__dirname + '/../bower_components'));
 
 
 // app.use('/', index);
