@@ -33,15 +33,17 @@ var port  = process.env.PORT || 3000;
 // })
 
 app.use(express.static(__dirname +'/public'));
-app.use(express.static(__dirname + '/../bower_components'));
+app.use(express.static(__dirname + '/bower_components'));
 
-
+var jobs = require('./routes/jobs.js')
+app.use('/jobs',jobs);
 // app.use('/', index);
-app.get('*',function(req,res,next){
+app.get('/',function(req,res,next){
   console.log(__dirname)
   res.sendFile(path.join(__dirname, '/public/homepage.html'));
   // res.json({msg:'test'})
 })
+
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
 //   var err = new Error('Not Found');
