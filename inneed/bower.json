@@ -2,11 +2,8 @@
   "name": "inneed-app",
   "description": "",
   "main": "app.js",
-  "authors": [
-    ""
-  ],
   "license": "ISC",
-  "homepage": "",
+  "homepage": "https://github.com/marcushvega/groupProjectResponsiveWeb",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -14,7 +11,11 @@
     "test",
     "tests"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "core-component-page": "Polymer/core-component-page#^0.5",
+    "paper-dialog": "PolymerElements/paper-dialog#^2.0.0",
+    "mongoose": "^4.11.1"
+  },
   "resolutions": {
     "webcomponentsjs": "^0.7.24"
   }
