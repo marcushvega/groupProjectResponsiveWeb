@@ -29,7 +29,7 @@ app.use('/users',users);
 app.get('/',function(req,res,next){
   console.log(__dirname)
   res.sendFile(path.join(__dirname, '/public/homepage.html'));
-  
+
 })
 
 app.listen(port);

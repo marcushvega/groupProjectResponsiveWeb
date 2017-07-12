@@ -1,0 +1,57 @@
+<link rel="import" href="/polymer/polymer.html"></link>
+<dom-module id="job-search">
+  <template>
+    <h1>Job Board</h1>
+    <table style="width:100%">
+      <tr>
+        <th>Company Name</th>
+        <th> Job Description</th>
+        <th>Openings</th>
+      </tr>
+      <template is="dom-repeat" items="[[jobs]]" as="job">
+      <tr>
+        <td>[[job.companyName]]</td>
+        <td>[[job.jobDesc]]</td>
+        <td>[[job.openings]]</td>
+      </tr>
+      </template>
+    </table>
+
+      <h3></h3>
+
+
+  </template>
+  <script>
+    Polymer({
+      is:'job-search',
+      properties:{
+        jobs:{
+          type: Array
+      }
+    },
+    ready: function(){
+      this.findObjects();
+    },
+    findObjects: function(){
+
+    }
+    })
+  </script>
+</dom-module>
+<!-- 'jobs', {
+
+  companyName: {type: String,required: true },
+
+  jobDesc: {type: String},
+
+  openings: {type: Number},
+
+  employmentType: {type: String},
+
+  skills: {type: Array},
+
+  certs: {type: String},
+
+  startDate: {type: String},
+
+  drugTest: {type: String} -->
