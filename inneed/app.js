@@ -7,14 +7,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-
 var app = express();
 var port  = process.env.PORT || 3000;
 
 var mongoose = require('mongoose');
-mongoose.connect('//localhost:27017/job_website');
+mongoose.connect('mongodb://localhost:27017/job_website');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

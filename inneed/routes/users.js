@@ -1,21 +1,60 @@
 var express = require('express');
+
 var router = express.Router();
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
 
+var Users = require('../models/users.js');
 
-var users =  [
-    "stupid",
-    "phil",
-    "ambyr",
-    "james"
-]
 /* GET users listing. */
+
 router.get('/', function(req, res, next) {
-  res.json(users);
-  //  users.FindAll().then(function(users){
- //    res.json(users);
-   // })
+    Users.find(function(err,Users){
+
+    if (err){
+        console.log(err);
+    }
+
+     res.json(Users);
+
+    });
+
+});
+
+router.post('/', function(req, res, next) {
+    console.log(req.body);
+    var user = new Users(req.body.user)
+
+    user.save(function(err,Users){
+
+    if (err){
+
+        console.log(err);
+
+    }
+
+     res.json(Users);
+
+    })
+
+});
+
+router.post('/', function(req, res, next) {
+
+  //res.json(users);
+
+    var user = new Users(req.body.user);
+
+    user.save().then(function(err,users){
+
+    if (err){
+
+        console.log(err);
+
+    }
+
+     res.json(users);
+
+    })
+
 });
 
 module.exports = router;

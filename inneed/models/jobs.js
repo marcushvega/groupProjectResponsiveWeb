@@ -14,7 +14,7 @@ module.exports = mongoose.model('jobs', {
 
     skills: {type: Array},
 
-    certs: {type: String},
+    certs: {type: Array},
 
     startDate: {type: String},
 
