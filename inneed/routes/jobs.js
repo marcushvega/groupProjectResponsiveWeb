@@ -38,5 +38,19 @@ router.post('/', function(req, res, next) {
 
 });
 
+router.delete('/:id', function(req, res, next) {
+    console.log(req.params.id);
+
+   Jobs.remove({_id:req.params.id},function(err,Jobs){
+
+    if (err){
+      console.log(err);
+    }
+     res.json(Jobs);
+
+    })
+
+});
+
 
 module.exports = router;

@@ -1,10 +1,9 @@
 <link rel="import" href="/polymer/polymer.html">
-<!-- <link rel="import" href="/iron-ajax/iron-ajax.html"> -->
+<link rel="import" href="/iron-ajax/iron-ajax.html">
 <dom-module id="job-search">
   <template>
     <!-- request to the database for jobs-->
     <iron-ajax
-      auto
       id="getJobsFromDatabase"
       url="/jobs"
       handle-as="json"
@@ -12,61 +11,73 @@
       on-error="jobRetrivalError"
       ></iron-ajax>
     <h1>Job Board</h1>
-    <table style="width:100%">
+    <table>
       <tr>
         <th>Company Name</th>
-        <th> Job Description</th>
+        <th>Job Position</th>
+        <th>Key Skills</th>
+        <th>Employment Type</th>
+        <th>Start Date</th>
         <th>Openings</th>
+        <th>Certification</th>
+        <th>Drug Test</th>
       </tr>
       <template is="dom-repeat" items="[[jobs]]" as="job">
       <tr>
         <td>[[job.companyName]]</td>
         <td>[[job.jobDesc]]</td>
+        <td>[[job.skills]]</td>
+        <td>[[job.employmentType]]</td>
+        <td>[[job.startDate]]</td>
         <td>[[job.openings]]</td>
+        <td>[[job.certs]]</td>
+        <td>[[job.drugTest]]</td>
       </tr>
       </template>
     </table>
 
-      <h3></h3>
-
-
   </template>
+  <style>
+  td{
+    padding-right: 2cm;
+    padding-bottom:2cm;
+    vertical-align: top;
+  }
+  th{
+    padding-right:2cm;
+  }
+
+  </style>
   <script>
     Polymer({
       is:'job-search',
       properties:{
         jobs:{
-          type: Array
+          type: Object
+      },
+      skills:{
+
       }
     },
     ready: function(){
-      // this.$.getJobsFromDatabase.generateRequest();
+    },
+    obtainData: function(){
+      this.$.getJobsFromDatabase.generateRequest();
     },
     jobList: function(event){
-      console.log('jobs found');
-      var jobs = event.detail.response;
-      console.log(event.detail.response);
+      this.jobs = event.detail.response;
+      // console.log(event.detail.response);
     },
     jobRetrivalError: function(event){
       console.log("error found!");
-    }
+    },
+
     })
   </script>
 </dom-module>
-<!-- 'jobs', {
 
-  companyName: {type: String,required: true },
 
-  jobDesc: {type: String},
+<!--
+  "drugTest": "None",
 
-  openings: {type: Number},
-
-  employmentType: {type: String},
-
-  skills: {type: Array},
-
-  certs: {type: String},
-
-  startDate: {type: String},
-
-  drugTest: {type: String} -->
+  ] -->

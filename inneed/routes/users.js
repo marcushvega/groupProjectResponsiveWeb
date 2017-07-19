@@ -2,6 +2,11 @@ var express = require('express');
 
 var router = express.Router();
 
+<<<<<<< 68e1ace7d8db69c094bc4b8a752256c8e41d1826
+=======
+var router = express.Router();
+
+>>>>>>> correced job search layout and connected signup form
 var Users = require('../models/users.js');
 
 /* GET users listing. */
