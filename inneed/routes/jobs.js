@@ -7,6 +7,7 @@ var Jobs = require('../models/jobs.js');
 /* GET jobs listing. */
 
 router.get('/', function(req, res, next) {
+  console.log('hit')
     Jobs.find(function(err,Jobs){
 
     if (err){
@@ -37,24 +38,19 @@ router.post('/', function(req, res, next) {
 
 });
 
-router.post('/', function(req, res, next) {
+router.delete('/:id', function(req, res, next) {
+    console.log(req.params.id);
 
-  //res.json(users);
-
-    var job = new Jobs(req.body.job);
-
-    job.save().then(function(err,jobs){
+   Jobs.remove({_id:req.params.id},function(err,Jobs){
 
     if (err){
-
-        console.log(err);
-
+      console.log(err);
     }
-
-     res.json(jobs);
+     res.json(Jobs);
 
     })
 
 });
+
 
 module.exports = router;

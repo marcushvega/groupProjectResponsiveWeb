@@ -1,4 +1,5 @@
 indeed/node_modules/
 indeed/bower_components/
-indeed/data/db/
-
+bower_components/
+inneed/data/
+inneed/data/db/

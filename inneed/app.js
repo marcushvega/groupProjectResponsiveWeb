@@ -17,8 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(express.static(__dirname +'/public'));
-app.use(express.static(__dirname + '/bower_components'));
+
 
 var jobs = require('./routes/jobs.js')
 app.use('/jobs',jobs);
@@ -26,10 +25,12 @@ app.use('/jobs',jobs);
 var users = require('./routes/users.js')
 app.use('/users',users);
 
+app.use(express.static(__dirname +'/public'));
+app.use(express.static(__dirname + '/bower_components'));
 app.get('/',function(req,res,next){
   console.log(__dirname)
   res.sendFile(path.join(__dirname, '/public/homepage.html'));
-  
+
 })
 
 app.listen(port);
