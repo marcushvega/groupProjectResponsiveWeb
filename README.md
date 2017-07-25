@@ -24,4 +24,8 @@ DEBUG=inneed:* npm start (LINUX/MAC START COMMAND)
 
 set DEBUG=inneed:* & npm start (WINDOWS START COMMAND)
 
+// Due to changes, `node app.js` should start the program
+
 App should now be viewable at http://localhost:3000/
+
+TEST TEST TEST
