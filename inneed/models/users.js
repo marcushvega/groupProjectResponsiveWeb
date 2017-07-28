@@ -1,25 +1,61 @@
-var mongoose = require('mongoose');
+var express = require('express');
 
-//Create a model of the schema
+var router = express.Router();
 
-module.exports = mongoose.model('users', {
 
-    firstName: {type: String,required: true },
+var Users = require('../models/users.js');
 
-    lastName: {type: String,required: true},
+/* GET users listing. */
 
-    dateOfBirth: {type: Date},
-    
-    email: {type: String},
+router.get('/', function(req, res, next) {
+    Users.find(function(err,Users){
 
-    password: {type: String},
+    if (err){
+        console.log(err);
+    }
 
-    skills: {type: Object},
+     res.json(Users);
 
-    compTrains: {type: Object},
-    
-    address: {type: String},
-
-    drugTest: {type: String}
+    });
 
 });
+
+router.post('/', function(req, res, next) {
+    console.log(req.body);
+    var user = new Users(req.body.user)
+
+    user.save(function(err,Users){
+
+    if (err){
+
+        console.log(err);
+
+    }
+
+     res.json(Users);
+
+    })
+
+});
+
+router.post('/', function(req, res, next) {
+
+  //res.json(users);
+
+    var user = new Users(req.body.user);
+
+    user.save().then(function(err,users){
+
+    if (err){
+
+        console.log(err);
+
+    }
+
+     res.json(users);
+
+    })
+
+});
+
+module.exports = router;
