@@ -1,3 +1,4 @@
 node_modules/
 bower_components/
-inneed/data/
+	../bower_components/
+	data/
