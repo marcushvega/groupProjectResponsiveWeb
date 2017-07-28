@@ -1,56 +1,23 @@
-var express = require('express');
+var mongoose = require('mongoose');
 
-var router = express.Router();
+//Create a model of the schema
 
-var Jobs = require('../models/jobs.js');
+module.exports = mongoose.model('jobs', {
 
-/* GET jobs listing. */
+    companyName: {type: String,required: true },
 
-router.get('/', function(req, res, next) {
-  console.log('hit')
-    Jobs.find(function(err,Jobs){
+    jobDesc: {type: String},
 
-    if (err){
-        console.log(err);
-    }
+    openings: {type: Number},
 
-     res.json(Jobs);
+    employmentType: {type: String},
 
-    });
+    skills: {type: Array},
 
-});
+    certs: {type: Array},
 
-router.post('/', function(req, res, next) {
-    console.log(req.body);
-    var job = new Jobs(req.body.job)
+    startDate: {type: String},
 
-    job.save(function(err,Jobs){
-
-    if (err){
-
-        console.log(err);
-
-    }
-
-     res.json(Jobs);
-
-    })
+    drugTest: {type: String}
 
 });
-
-router.delete('/:id', function(req, res, next) {
-    console.log(req.params.id);
-
-   Jobs.remove({_id:req.params.id},function(err,Jobs){
-
-    if (err){
-      console.log(err);
-    }
-     res.json(Jobs);
-
-    })
-
-});
-
-
-module.exports = router;

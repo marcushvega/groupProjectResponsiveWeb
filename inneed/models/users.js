@@ -1,61 +1,32 @@
-var express = require('express');
+var mongoose = require('mongoose');
 
-var router = express.Router();
+//Create a model of the schema
+//var auth..
 
+module.exports = mongoose.model('users', {
 
-var Users = require('../models/users.js');
+    // firstName: {type: String,required: true },
 
-/* GET users listing. */
+    // lastName: {type: String,required: true},
 
-router.get('/', function(req, res, next) {
-    Users.find(function(err,Users){
+    googleId: {type: String},
 
-    if (err){
-        console.log(err);
-    }
+    token: {type: String},
 
-     res.json(Users);
+    name: {type: String},
 
-    });
+    dateOfBirth: {type: Date},
+    
+    email: {type: String},
 
-});
+    password: {type: String},
 
-router.post('/', function(req, res, next) {
-    console.log(req.body);
-    var user = new Users(req.body.user)
+    skills: {type: Object},
 
-    user.save(function(err,Users){
+    compTrains: {type: Object},
+    
+    address: {type: String},
 
-    if (err){
-
-        console.log(err);
-
-    }
-
-     res.json(Users);
-
-    })
+    drugTest: {type: String}
 
 });
-
-router.post('/', function(req, res, next) {
-
-  //res.json(users);
-
-    var user = new Users(req.body.user);
-
-    user.save().then(function(err,users){
-
-    if (err){
-
-        console.log(err);
-
-    }
-
-     res.json(users);
-
-    })
-
-});
-
-module.exports = router;
