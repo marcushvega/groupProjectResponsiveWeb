@@ -126,20 +126,23 @@ height: 50%;
       ready:function(){
         console.log('app ready');
       },
-      openLoginBox: function(e){
-        this.$.openLoginBox.open();
-        console.log('reached');
-      },
-      openSignUpBox: function(e){
-        this.$.openSignUpBox.open();
-        console.log('reached signup');
-      },
+      // openLoginBox: function(e){
+      //   this.$.openLoginBox.open();
+      //   console.log('reached');
+      // },
+      // openSignUpBox: function(e){
+      //   this.$.openSignUpBox.open();
+      //   console.log('reached signup');
+      // },
       openJobSearchBox: function(e){
         var  data = this.$$('#searchView');
         data.obtainData();
         this.$.openJobSearchBox.refit();
         this.$.openJobSearchBox.open();
-      }
+      },
+			openLoginBox:function(e){
+				location.href = '/auth/google';
+			},
     })
   </script>
 </dom-module>
