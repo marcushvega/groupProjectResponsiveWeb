@@ -2,6 +2,7 @@
 <link rel="import" href="./loginbox.html"/>
 <link rel="import" href="./jobsearch.html"/>
 <link rel="import" href="./signupform.html"/>
+<link rel="import" href="./basicPolymer.html"/>
 <link rel="import" href="/paper-dialog/paper-dialog.html"/>
 <link rel="import" href="/paper-dialog-scrollable/paper-dialog-scrollable.html"/>
 <dom-module id='inneed-app'>x
@@ -15,17 +16,22 @@
 
 	       
 		       <div class="item tm3" on-click = "openJobSearchBox">
-			          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi9iY8pSW8SLWpYevZ3muUaC6lD3EZCwlpLlS50U3LnhkjvqvdkA">
-	               <p>Search</p>
+			       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi9iY8pSW8SLWpYevZ3muUaC6lD3EZCwlpLlS50U3LnhkjvqvdkA">
+	           <p>Search</p>
 	        </div>
+
+          <div class="item tmBasic" on-click="openBasicPoly">
+            <img src="https://cdn.pixabay.com/photo/2017/07/24/19/57/tiger-2535888_960_720.jpg" />
+            <p>Basic Poly</p>
+          </div>
 	    </div>
-      <paper-dialog id="openLoginBox" >
+      <!--<paper-dialog id="openLoginBox" >
           <login-box></login-box>
       </paper-dialog>
 
       <paper-dialog id="openSignUpBox">
         <signup-form></signup-form>
-      </paper-dialog>
+      </paper-dialog>-->
 
       <paper-dialog id="openJobSearchBox" >
         <paper-dialog-scrollable id= "scrollBox">
@@ -136,6 +142,9 @@ height: 50%;
         data.obtainData();
         this.$.openJobSearchBox.refit();
         this.$.openJobSearchBox.open();
+      },
+      openBasicPoly: function(e) {
+        location.href="/poly"
       },
       googleLogin:function(e) {
         location.href= '/auth/google'

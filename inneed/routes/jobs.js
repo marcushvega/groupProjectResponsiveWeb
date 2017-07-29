@@ -2,29 +2,29 @@ var express = require('express');
 
 var router = express.Router();
 
-var Jobs = require('../models/jobs.js');
+var Job = require('../models/jobs.js');
 
 /* GET jobs listing. */
 
-router.get('/', function(req, res, next) {
-  console.log('hit')
-    Jobs.find(function(err,Jobs){
+router.get('/jobs', function(req, res, next) {
+  console.log('hitJobs')
+    Job.find(function(err,Job){
 
     if (err){
         console.log(err);
     }
 
-     res.json(Jobs);
+     res.json(Job);
 
     });
 
 });
 
-router.post('/', function(req, res, next) {
+router.post('/jobs', function(req, res, next) {
     console.log(req.body);
     var job = new Jobs(req.body.job)
 
-    job.save(function(err,Jobs){
+    job.save(function(err,job){
 
     if (err){
 
@@ -32,7 +32,7 @@ router.post('/', function(req, res, next) {
 
     }
 
-     res.json(Jobs);
+     res.json(job);
 
     })
 
