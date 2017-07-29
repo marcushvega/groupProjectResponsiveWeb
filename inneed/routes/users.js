@@ -4,57 +4,57 @@ var router = express.Router();
 
 var Users = require('../models/users.js');
 
-/* GET users listing. */
+// /* GET users listing. */
 
-router.get('/', function(req, res, next) {
-    Users.find(function(err,Users){
+// router.get('/', function(req, res, next) {
+//     Users.find(function(err,Users){
 
-    if (err){
-        console.log(err);
-    }
+//     if (err){
+//         console.log(err);
+//     }
 
-     res.json(Users);
+//      res.json(Users);
 
-    });
+//     });
 
-});
+// });
 
-router.post('/', function(req, res, next) {
-    console.log(req.body);
-    var user = new Users(req.body.user)
+// router.post('/', function(req, res, next) {
+//     console.log(req.body);
+//     var user = new Users(req.body.user)
 
-    user.save(function(err,Users){
+//     user.save(function(err,Users){
 
-    if (err){
+//     if (err){
 
-        console.log(err);
+//         console.log(err);
 
-    }
+//     }
 
-     res.json(Users);
+//      res.json(Users);
 
-    })
+//     })
 
-});
+// });
 
-router.post('/', function(req, res, next) {
+// router.post('/', function(req, res, next) {
 
-  //res.json(users);
+//   //res.json(users);
 
-    var user = new Users(req.body.user);
+//     var user = new Users(req.body.user);
 
-    user.save().then(function(err,users){
+//     user.save().then(function(err,users){
 
-    if (err){
+//     if (err){
 
-        console.log(err);
+//         console.log(err);
 
-    }
+//     }
 
-     res.json(users);
+//      res.json(users);
 
-    })
+//     })
 
-});
+// });
 
 module.exports = router;

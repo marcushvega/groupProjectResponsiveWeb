@@ -1,44 +1,4 @@
-// // test comment
-
-// var express = require('express');
-// var path = require('path');
-// var favicon = require('serve-favicon');
-// var logger = require('morgan');
-// var cookieParser = require('cookie-parser');
-// var bodyParser = require('body-parser');
-
-// var app = express();
-// var port  = process.env.PORT || 3002;
-
-// var mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost:27017/test');
-
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(cookieParser());
-
-
-
-// var jobs = require('./routes/jobs.js')
-// app.use('/jobs',jobs);
-
-// var users = require('./routes/users.js')
-// app.use('/users',users);
-
-// app.use(express.static(__dirname +'/public'));
-// app.use(express.static(__dirname + '/bower_components'));
-// app.get('/',function(req,res,next){
-//   console.log(__dirname)
-//   res.sendFile(path.join(__dirname, '/public/homepage.html'));
-
-// })
-
-// app.listen(port);
-// console.log(`running on ${port}`);
-
-//==Above this line is the most recent previous code==\\
-
-// // test comment
+// test comment
 
 var express = require('express');
 var path = require('path');
@@ -47,62 +7,100 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongodb = require('mongodb');
-var fs = require('fs');
+// var fs = require('fs');
+//REQUIRED for oauth
 var passport = require('passport');
 require('./config/passport.js')(passport);
 
 var app = express();
 var port  = process.env.PORT || 3000;
-var views = path.join(__dirname, 'views');
+// var views = path.join(__dirname, 'views');
 
+//REQUIRED for mongoose
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/test');
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
-app.use(require('cookie-parser')());
-app.use(require('body-parser').urlencoded({ extended: true }));
-app.use(require('express-session')({
-  secret: 'keyboard cat',
-  resave: true,
-  saveUninitialized: true
-}));
+// app.use(require('express-session')({
+//   secret: 'keyboard cat',
+//   resave: true,
+//   saveUninitialized: true
+// }));
+
+// REQUIRED for oauth
 app.use(passport.initialize());
 app.use(passport.session());
 
-// May want to put all routes in one .js file
-// var allRoutes = require('./routes/allRoutes.js');
-// app.use('/routes');
-
-var jobs = require('./routes/jobs.js');
+// REQUIRED for job schema
+var jobs = require('./routes/jobs')
 app.use('/jobs',jobs);
 
-var users = require('./routes/users.js');
+// REQUIRED for user schema
+var users = require('./routes/users')
 app.use('/users',users);
 
-var routes = require('./routes/routes.js')
-
+// var routes = require('./routes/routes.js')
 // app.use('/api', routes);
 
+// REQUIRED for easier path access to polymer components
 app.use(express.static(__dirname +'/public'));
 app.use(express.static(__dirname + '/bower_components'));
-app.use(express.static(__dirname + '/models'));
+// app.use(express.static(__dirname + '/models'));
+
+
+//==============================================================
+//==============================================================
+//==  Routing for pages ========================================
+//==============================================================
+
+// REQUIRED for homepage access
+// due to '/', this function will be execute for EVERY request
 app.get('/',function(req,res,next){
   console.log(__dirname)
   res.sendFile(path.join(__dirname, '/public/homepage.html'));
 });
 
-
-//loads all files in models directory
-fs.readdirSync(__dirname + '/models').forEach(function(filename){
-  if (~filename.indexOf('js')) {
-    require(__dirname + '/models/' + filename);
-  };
+// REQUIRED for sign-up page access
+// route for signup form
+app.get('/sign-up', function(req, res, next){
+  console.log(__dirname)
+  res.sendFile(path.join(__dirname, '/public/signUpPage.html'));
 });
 
-//sends GET request for all the users in the database
+// REQUIRED for profile page access
+app.get('/profile',function(req,res,next){
+  console.log(__dirname)
+  res.sendFile(path.join(__dirname, '/public/elements/htmlOnlyProfile.html'));
+});
+
+
+//==============================================================
+//==============================================================
+//==  CRUD stuff for jobs ======================================
+//==============================================================
+
+
+//sends GET request for all the jobs in the database
+app.get('/jobs', function(req, res, next){
+//              'jobs' represents the jobs.js in ./models
+  mongoose.model('jobs').find(function(err, jobs){
+
+    if (err){
+        res.redirect('/');
+    }
+    res.send(jobs);
+  });
+});
+
+//==============================================================
+//==============================================================
+//==  CRUD stuff for users =====================================
+//==============================================================
+
+// sends GET request for all the users in the database
 app.get('/users', function(req, res, next){
   //             'users' represents the users.js in ./models
   mongoose.model('users').find(function(err, users){
@@ -114,50 +112,46 @@ app.get('/users', function(req, res, next){
   });
 });
 
-// route for home page
-app.get('/',function(req,res,next){
-  console.log(__dirname)
-  res.sendFile(path.join(__dirname, '/public/homepage.html'));
-  
-});
+app.post('/users', function(req, res, next){
+  //             'users' represents the users.js in ./models
+  mongoose.model('users').find(function(err, users){
 
-// route for login form
-// route for processing the login form
-
-// route for signup form
-app.get('/sign-up', function(req, res, next){
-  console.log(__dirname)
-  res.sendFile(path.join(__dirname, '/public/elements/htmlOnlySignUp.html'));
-});
-
-app.get('/poly', function(req, res, next){
-  console.log(__dirname)
-  res.sendFile(path.join(__dirname, '/public/elements/basicPolymer.html'));
-});
-// route for processing the signup form
-
-/*
-// route for showing the profile page
-app.get('/profile', isLoggedIn, function(req, res){
-    res.render(profile.html) {
-        user: req.user; // get the user out of session and pass to template
+    if (err){
+        res.redirect('/');
     }
-})
-*/
-// Show profile page
-app.get('/profile',function(req,res,next){
-  console.log(__dirname)
-  res.sendFile(path.join(__dirname, '/public/elements/htmlOnlyProfile.html'));
+    res.send(users);
+  });
 });
 
-// route for logging out
-app.get('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/');
-});
+//==Above this line is the most recent previous code==\\
 
-// facebook routes
-// twitter routes
+//===========================================================
+//===========================================================
+//======  These comments are things we may add still ?  =====
+//===========================================================
+
+// // May want to put all routes in one .js file
+// // var allRoutes = require('./routes/allRoutes.js');
+// // app.use('/routes');
+
+//======= UNSURE HOW IT DIFFERS FROM CURRENT ROUTE line 73ish ===
+// // route for showing the profile page
+// app.get('/profile', isLoggedIn, function(req, res){
+//     res.render(profile.html) {
+//         user: req.user; // get the user out of session and pass to template
+//     }
+// })
+
+//======= SEEMS NECESSARY============
+// // route for logging out
+// app.get('/logout', function(req, res) {
+//     req.logout();
+//     res.redirect('/');
+// });
+
+//======= HIGHLY UNLIKELY=============
+// // facebook routes
+// // twitter routes
 
 // =================================================
 // GOOGLE ROUTES ===================================

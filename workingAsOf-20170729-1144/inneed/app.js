@@ -182,6 +182,6 @@ function isLoggedIn(req, res, next) {
     //  redirect user to the home page
     res.redirect('/');
 }
-app.listen(port);
+// app.listen(port);
 console.log(`running on ${port}`);
 

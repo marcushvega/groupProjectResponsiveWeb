@@ -1,0 +1,81 @@
+<link rel="import" href="/polymer/polymer.html" />
+<link rel="import" href="/paper-checkbox/paper-checkbox.html" />
+<link rel="import" href="/iron-icon/iron-icon.html" />
+<!--<link rel="import" href="/paper-header-panel/paper-header-panel.html" />-->
+<link rel="import" href="/paper-input/paper-input.html" />
+
+<dom-module id="sign-up">
+  <template>
+    <!-- request to the database to createUser -->
+    <iron-ajax
+      id="putUser"
+      url="/users"
+      handle-as="json"
+      on-response="updatedUser"
+      on-error="updateUserError"
+    ></iron-ajax>
+    <!-- possibly request to the database to updateUser -->
+    <style>
+      /* local styles go here */
+      :host {
+        display: inline-block;
+      }
+      iron-icon {
+        fill: rgba(0,0,0,0);
+        stroke: currentcolor;
+      }
+      :host([pressed]) iron-icon {
+        fill: currentcolor;
+      }
+      #container {
+        display: flex;
+      }
+      paper-button {
+        font-family: 'Roboto', 'Noto', sans-serif;
+        font-weight: normal;
+        font-size: 14px;
+        -webkit-font-smoothing: antialiased;
+      }   
+      paper-button.green {
+        background-color: var(--paper-green-500);
+        color: white;
+      }
+      paper-button.green[active] {
+        background-color: var(--paper-red-500);
+      }
+    </style>
+    <!-- paper-header-panel is effectively the 
+         Polymer version of a div container -->
+    <iron-form>
+      <form method="PUT" action="/createUser">
+        <paper-input label="name"></paper-input>
+        <div id="container">
+          <paper-button
+            raised class="green" onclick="submitForm" />
+              Submit
+          </paper-button>
+          
+        </div>  
+      </form>
+    </iron-form>
+    <!--<div>
+      Name: <input type="text" name="fullName" />
+      <input type="submit" value="submit" /> 
+    </div>-->
+    <!-- local DOM goes here d-->
+    <!--<span>Please work</span>
+    <iron-icon icon="polymer">/</iron-icon>-->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'sign-up',
+      ready:function() {
+        console.log("reached sign-up form");
+      },
+      submitForm: function(e) {
+
+      }
+    });
+  </script>
+</dom-module>
