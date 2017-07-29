@@ -1,0 +1,25 @@
+{
+  "name": "inneed-app",
+  "description": "",
+  "main": "app.js",
+  "license": "ISC",
+  "homepage": "https://github.com/marcushvega/groupProjectResponsiveWeb",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "core-component-page": "Polymer/core-component-page#^0.5",
+    "paper-dialog": "PolymerElements/paper-dialog#^2.0.0",
+    "mongoose": "^4.11.1",
+    "dom-repeat-n": "^1.0.6",
+    "iron-ajax": "PolymerElements/iron-ajax#^2.0.2",
+    "paper-dialog-scrollable": "PolymerElements/paper-dialog-scrollable#^2.1.0"
+  },
+  "resolutions": {
+    "webcomponentsjs": "^0.7.24"
+  }
+}

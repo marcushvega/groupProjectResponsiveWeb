@@ -1,0 +1,178 @@
+<link rel="import" href="/polymer/polymer.html"></link>
+<dom-module id='signup-form'>
+  <template>
+    <div class="grid">
+    <form action="/" method="post" class="form signup">
+      <header class="signup__header">
+        <h3 class="title">Sign Up</h3>
+      </header>
+      <div class="signup__body">
+        <div class="form__field">
+          <input type="name" placeholder="First Name" required>
+        </div>
+        <div class="form__field">
+          <input type="email" placeholder="Email" required>
+        </div>
+        <div class="form__field">
+          <input type="password" placeholder="Password" required>
+        </div>
+      </div>
+      <footer class="login__footer">
+        <input type="submit" value="Login">
+        <p><span class="icon icon--info">?</span><a href="#">Forgot Password</a></p>
+      </footer>
+    </form>
+  </div>
+  </template>
+  <style>
+
+  /*.grid {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 24em;
+    width: 90%;
+  }*/
+/*
+  .icon {
+    display: inline-block;
+    height: 1.25em;
+    line-height: 1.25em;
+    margin-right: 0.625em;
+    text-align: center;
+    vertical-align: middle;
+    width: 1.25em;
+  }
+
+  .icon--info {
+    background-color: #e5e5e5;
+    border-radius: 50%;
+  }
+
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  a:hover {
+    color: #1dabb8;;
+  }
+
+  input {
+    appearance: none;
+    border: none;
+    font: inherit;
+    margin: 0;
+    outline: none;
+    padding: 0;
+  }
+
+  input[type='submit'] {
+    cursor: pointer;
+  }
+
+  .form input[type='email'],
+  .form input[type='password'] {
+    width: 100%;
+  }
+
+  /* modules/login.css */
+
+  /*:root {
+    --loginBorderRadius: 0.25em;
+    --loginInputBorderRadius: 0.25em;
+  }
+
+  .signup__header {
+    background-color: #282830;
+    border-top-left-radius: var(--loginBorderRadius);
+    border-top-right-radius: var(--loginBorderRadius);
+    color: #fff;
+    padding: 1.5em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .title {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .signup__body {
+    background-color: #fff;
+    padding: 1.5em;
+    position: relative;
+  }
+
+  .signup__body::before {
+    background-color: #fff;
+    content: '';
+    height: 0.5em;
+    left: 50%;
+    margin-left: -0.25em;
+    margin-top: -0.25em;
+    position: absolute;
+    top: 0;
+    transform: rotate(45deg);
+    width: 0.5em;
+  }
+
+  .signup input[type='email'],
+  .signup input[type='password'] {
+    border: 0.0625em solid #e5e5e5;
+    padding: 1em 1.25em;
+  }
+
+  .signup input[type='email'] {
+    border-top-left-radius: var(--loginInputBorderRadius);
+    border-top-right-radius: var(--loginInputBorderRadius);
+  }
+
+  .signup input[type='password'] {
+    border-bottom-left-radius: var(--loginInputBorderRadius);
+    border-bottom-right-radius: var(--loginInputBorderRadius);
+    border-top: 0;
+  }
+
+  .signup input[type='submit'] {
+    background-color: #1dabb8;
+    border-radius: var(--loginInputBorderRadius);
+    color: #fff;
+    font-weight: 700;
+    order: 1;
+    padding: 0.75em 1.25em;
+    transition: background-color 0.3s;
+  }
+
+  .signup input[type='submit']:focus,
+  .signup input[type='submit']:hover {
+    background-color: #198d98;
+  }
+
+  .signup__footer {
+    align-items: center;
+    background-color: #fff;
+    border-bottom-left-radius: var(--loginBorderRadius);
+    border-bottom-right-radius: var(--loginBorderRadius);
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1.5em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+  }
+
+  .signup__footer p {
+    margin: 0;
+  }*/
+
+  </style>
+  <script>
+    Polymer({
+      is:'signup-form',
+      ready:function(){
+        console.log('sign up form class reached');
+      }
+    })
+  </script>
+</dom-module>
