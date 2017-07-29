@@ -4,53 +4,38 @@ var router = express.Router();
 
 var Job = require('../models/jobs.js');
 
-/* GET jobs listing. */
+// router.post('/jobs', function(req, res, next) {
+//     console.log(req.body);
+//     var job = new Jobs(req.body.job);
 
-router.get('/jobs', function(req, res, next) {
-  console.log('hitJobs')
-    Job.find(function(err,Job){
+//     job.save(function(err,job){
 
-    if (err){
-        console.log(err);
-    }
+//     if (err){
 
-     res.json(Job);
+//         console.log(err);
 
-    });
+//     }
 
-});
+//      res.json(job);
 
-router.post('/jobs', function(req, res, next) {
-    console.log(req.body);
-    var job = new Jobs(req.body.job)
+//     })
 
-    job.save(function(err,job){
+// });
 
-    if (err){
 
-        console.log(err);
+// router.delete('/:id', function(req, res, next) {
+//     console.log(req.params.id);
 
-    }
+//    Jobs.remove({_id:req.params.id},function(err,Jobs){
 
-     res.json(job);
+//     if (err){
+//       console.log(err);
+//     }
+//      res.json(Jobs);
 
-    })
+//     })
 
-});
-
-router.delete('/:id', function(req, res, next) {
-    console.log(req.params.id);
-
-   Jobs.remove({_id:req.params.id},function(err,Jobs){
-
-    if (err){
-      console.log(err);
-    }
-     res.json(Jobs);
-
-    })
-
-});
+// });
 
 
 module.exports = router;
