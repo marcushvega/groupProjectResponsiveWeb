@@ -1,18 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-  
-</head>
-<body class="loading">
+<!--<!DOCTYPE html>
+<>-->
+<link rel="import" href="/polymer/polymer.html">
+<link rel="import" href="/iron-ajax/iron-ajax.html">
+<dom-module id='user-profile'>
+  <template>
+<!--<body class="loading">
   <header>
     <h1> Job Profile</h1>
-  </header>
-
-  <inneed-app></inneed-app>
+  </header>-->
+   <iron-ajax
+      auto
+      id="getUsersFromDatabase"
+      url="/users"
+      handle-as="json"
+      on-response="userProfileData"
+      on-error="userRetrivalError"
+      ></iron-ajax>
+<!--
+  <inneed-app></inneed-app>-->
     <!-- Need to PUT all this based on _id or email from the mongodb -->
 
     <!-- displayName -->
-    <h3>Name</h3>
+    <h3>Name: </h3> <div>{{users.name}}</div>
 
     <!-- dateOfBirth -->
     <h3>Date of Birth</h3>
@@ -23,5 +32,28 @@
     <form action="/logout">
       <button type="submit">Submit</button>
     </form>
-</body>
-<style>
+<!--</body>
+<style>-->
+  </template>
+    <script>
+    Polymer({
+      is:'user-profile',
+      properties:{
+          users:{
+          type: Object
+        }
+      },
+      userProfileData: function(event){
+        var list = event.detail.response
+          this.users = list[list.length-1] ;
+          console.log(this.users)
+      },
+
+      userRetrivalError: function(){
+        console.log("Darn it")
+      }
+
+
+    })
+      </script>
+  </dom-module>

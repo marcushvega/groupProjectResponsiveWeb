@@ -24,11 +24,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// app.use(require('express-session')({
-//   secret: 'keyboard cat',
-//   resave: true,
-//   saveUninitialized: true
-// }));
+app.use(require('express-session')({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true
+}));
 
 // REQUIRED for oauth
 app.use(passport.initialize());
@@ -73,7 +73,7 @@ app.get('/sign-up', function(req, res, next){
 // REQUIRED for profile page access
 app.get('/profile',function(req,res,next){
   console.log(__dirname)
-  res.sendFile(path.join(__dirname, '/public/elements/htmlOnlyProfile.html'));
+  res.sendFile(path.join(__dirname, '/public/profilePage.html'));
 });
 
 
