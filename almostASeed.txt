@@ -1,0 +1,121 @@
+db.jobs.insert([
+  {
+    "companyName": "Haynes Hopkins",
+    "jobDesc": "Nulla incididunt anim nostrud occaecat tempor est enim. Consectetur nostrud exercitation magna officia qui id ut velit nulla.",
+    "openings": 7,
+    "employmentType": "full-time",
+    "skills": [
+      {
+        "skill": "pariatur voluptate"
+      },
+      {
+        "skill": "nostrud aliqua"
+      }
+    ],
+    "certs": [],
+    "startDate": "2017-08-11",
+    "drugTest": true
+  },
+  {
+    "companyName": "Velez Mullen",
+    "jobDesc": "Ex voluptate proident esse labore excepteur et non veniam ad aute incididunt id ad veniam. Lorem anim est dolore culpa.",
+    "openings": 11,
+    "employmentType": "full-time",
+    "skills": [
+      {
+        "skill": "occaecat est"
+      },
+      {
+        "skill": "consequat quis"
+      }
+    ],
+    "certs": [],
+    "startDate": "2017-08-10",
+    "drugTest": true
+  },
+  {
+    "companyName": "Stewart Cobb",
+    "jobDesc": "Elit veniam fugiat aute aute. Lorem in nostrud adipisicing laboris occaecat voluptate velit amet Lorem ad.",
+    "openings": 0,
+    "employmentType": "full-time",
+    "skills": [
+      {
+        "skill": "occaecat voluptate"
+      },
+      {
+        "skill": "deserunt et"
+      }
+    ],
+    "certs": [],
+    "startDate": "2017-08-03",
+    "drugTest": true
+  },
+  {
+    "companyName": "Goff Kramer",
+    "jobDesc": "Aliquip commodo anim veniam ullamco laboris id sint enim consectetur do occaecat ad. Laboris ullamco cillum deserunt pariatur ullamco elit proident commodo exercitation non ullamco excepteur ut quis.",
+    "openings": 1,
+    "employmentType": "full-time",
+    "skills": [
+      {
+        "skill": "enim et"
+      },
+      {
+        "skill": "nostrud mollit"
+      }
+    ],
+    "certs": [],
+    "startDate": "2017-08-07",
+    "drugTest": true
+  },
+  {
+    "companyName": "Amber Melton",
+    "jobDesc": "Fugiat sint deserunt non ex amet Lorem deserunt labore. Eu veniam minim ipsum qui eu aliqua amet incididunt cupidatat laborum.",
+    "openings": 10,
+    "employmentType": "full-time",
+    "skills": [
+      {
+        "skill": "duis elit"
+      },
+      {
+        "skill": "sint eiusmod"
+      }
+    ],
+    "certs": [],
+    "startDate": "2017-08-17",
+    "drugTest": false
+  },
+  {
+    "companyName": "Manning Lambert",
+    "jobDesc": "Incididunt id do quis non labore occaecat. Incididunt anim sunt deserunt pariatur.",
+    "openings": 6,
+    "employmentType": "full-time",
+    "skills": [
+      {
+        "skill": "cillum elit"
+      },
+      {
+        "skill": "tempor consequat"
+      }
+    ],
+    "certs": [],
+    "startDate": "2017-08-02",
+    "drugTest": false
+  },
+  {
+    "companyName": "Theresa Branch",
+    "jobDesc": "Magna culpa deserunt laboris voluptate aliquip eu reprehenderit in est. Ea nulla cillum ea excepteur.",
+    "openings": 12,
+    "employmentType": "full-time",
+    "skills": [
+      {
+        "skill": "consequat cillum"
+      },
+      {
+        "skill": "aliqua qui"
+      }
+    ],
+    "certs": [],
+    "startDate": "2017-08-10",
+    "drugTest": false
+  }
+])

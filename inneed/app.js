@@ -81,24 +81,128 @@ app.get('/profile',function(req,res,next){
 //==============================================================
 //==  CRUD stuff for jobs ======================================
 //==============================================================
-
+var Job = require('./models/jobs');
 
 //sends GET request for all the jobs in the database
 app.get('/jobs', function(req, res, next){
 //              'jobs' represents the jobs.js in ./models
-  mongoose.model('jobs').find(function(err, jobs){
+  Job.find(function(err, jobs){
 
     if (err){
         res.redirect('/');
     }
-    res.send(jobs);
+    res.json(jobs);
   });
 });
+
+// Sends GET request for ONE job in the database 
+//  Finds job based on companyName
+app.get('/jobs/:companyName', function(req, res, next){
+  console.log("getting one job with companyName " + req.params.companyName);
+  Job.findOne({companyName: req.params.companyName}, function(err, user){
+    if(err){
+      return res.send(err);
+    }
+    console.log(user);
+    res.json(user);
+  })
+});
+
+// Sends GET request for ONE job in the database
+//  Finds job based on _id 
+//  Apparently url must be different if more than one Model.findOne exists ?
+//  See pattern between this findOne (_id) and the last findOne (companyName) ?
+app.get('/jobsById/:id', function(req, res, next){
+  console.log("getting one job with _id " + req.params.id);
+  Job.findOne({_id: req.params.id}, function(err, user){
+    if(err){
+      return res.send(err);
+    }
+    console.log(user);
+    res.json(user);
+  })
+});
+
+// POST function
+// Postman needs to send RAW JSON data
+//     OR
+// Postman needs to send X-WWW-FORM-URLENCODED data
+app.post('/jobs', function(req, res, next) {
+    console.log(req.body.job);
+    var job = new Job(req.body.job);
+
+    job.save(function(err,job){
+
+    if (err){
+        console.log(err);
+        return res.send(err);
+    }
+     res.json(job);
+    })
+
+});
+
+// DELETE function
+// Deletes by job id
+app.delete('/deleteJob/:id', function(req, res, next) {
+    console.log(req.params.id);
+
+   Job.remove({_id:req.params.id},function(err,Job){
+
+    if (err){
+      console.log(err);
+    }
+     res.json(Job);
+
+    })
+
+});
+
+//--------------------------------------------\
+//-----------PUT function not working---------\
+//---------------in progress------------------\
+//--------------------------------------------\
+// // PUT function for multiple field changes per id
+// app.put('/jobs/', function(req, res) {
+//   // Job.findById(req.params.id, function(err, doc) {
+//   //   if (!err) {
+//   //     utils.updateDocument(doc, Job, req.params);
+//   //     doc.save();
+//   //   }
+//   // });
+
+//    Job.findOne({companyName: req.params.companyName}, function (err, job){
+//      if (err) {
+//         console.log(err);
+//         res.send(422,'update failed');
+//      } else {
+//         //update fields
+//         console.log("about to search through fields");
+//         for (var field in Job.schema.paths) {
+//           console.log("at field " + field);
+//            if ((field !== '_id') && (field !== '__v')) {
+//              console.log("about to update field " + field);
+//              console.log("req.body." + field + " " + " is " + req.body[field]);
+//              console.log("job[field] is " + job[field])
+//               if (req.body[field] !== undefined) {
+//                  job[field] = req.body[field];
+//                  console.log("field " + field + " equals " + req.body[field]);
+//               }  
+//            }  
+//         }  
+//         job.save();
+//      }
+//   });
+// });
+
+
 
 //==============================================================
 //==============================================================
 //==  CRUD stuff for users =====================================
 //==============================================================
+
+var User = require('./models/users');
 
 // sends GET request for all the users in the database
 app.get('/users', function(req, res, next){
@@ -108,19 +212,55 @@ app.get('/users', function(req, res, next){
     if (err){
         res.redirect('/');
     }
-    res.send(users);
+    res.json(users);
   });
 });
 
-app.post('/users', function(req, res, next){
-  //             'users' represents the users.js in ./models
-  mongoose.model('users').find(function(err, users){
+// Sends GET request for ONE user in the database
+app.get('/users/:id', function(req, res, next){
+  console.log("getting one user with id " + req.params.id);
+  User.findOne({_id: req.params.id}, function(err, user){
+    if(err){
+      return res.send(err);
+    }
+    console.log(user);
+    res.json(user);
+  })
+});
+
+// POST function
+// Postman needs to send RAW JSON data
+//     OR
+// Postman needs to send X-WWW-FORM-URLENCODED data
+app.post('/users', function(req, res, next) {
+    console.log(req.body.user);
+    var user = new User(req.body.user);
+
+    user.save(function(err,user){
 
     if (err){
-        res.redirect('/');
+        console.log(err);
+        return res.send(err);
     }
-    res.send(users);
-  });
+     res.json(user);
+    })
+
+});
+
+// DELETE function
+// Deletes by user id
+app.delete('/deleteUser/:id', function(req, res, next) {
+    console.log(req.params.id);
+
+   User.remove({_id:req.params.id},function(err,Job){
+
+    if (err){
+      console.log(err);
+    }
+     res.json(User);
+
+    })
+
 });
 
 //==Above this line is the most recent previous code==\\
@@ -143,11 +283,12 @@ app.post('/users', function(req, res, next){
 // })
 
 //======= SEEMS NECESSARY============
-// // route for logging out
-// app.get('/logout', function(req, res) {
-//     req.logout();
-//     res.redirect('/');
-// });
+// route for logging out
+app.get('/logout', function(req, res) {
+    req.logout();
+    console.log("user has logged out of session");
+    res.redirect('/');
+});
 
 //======= HIGHLY UNLIKELY=============
 // // facebook routes
