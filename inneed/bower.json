@@ -21,7 +21,11 @@
     "paper-checkbox": "PolymerElements/paper-checkbox#^2.0.1",
     "iron-icon": "PolymerElements/iron-icon#^2.0.1",
     "paper-header-panel": "PolymerElements/paper-header-panel#^2.0.0",
-    "paper-input": "PolymerElements/paper-input#^2.0.1"
+    "paper-input": "PolymerElements/paper-input#^2.0.1",
+    "paper-dropdown-menu": "PolymerElements/paper-dropdown-menu#^2.0.0",
+    "paper-ui-elements": "PolymerElements/paper-ui-elements",
+    "paper-input-elements": "PolymerElements/paper-input-elements",
+    "paper-dropdown-input": "Juravenator/paper-dropdown-input#^2.5.0"
   },
   "resolutions": {
     "webcomponentsjs": "^0.7.24"

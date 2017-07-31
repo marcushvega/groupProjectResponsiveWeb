@@ -18,6 +18,10 @@
 			       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi9iY8pSW8SLWpYevZ3muUaC6lD3EZCwlpLlS50U3LnhkjvqvdkA">
 	           <p>Search</p>
 	        </div>
+
+          <div class="item tm4" on-click="profilePageGo">
+            <img src=https://www.w3schools.com/css/trolltunga.jpg/>
+            <p>My Profile</p>
 	    </div>
       <!--<paper-dialog id="openLoginBox" >
           <login-box></login-box>
@@ -137,12 +141,12 @@ height: 50%;
         this.$.openJobSearchBox.refit();
         this.$.openJobSearchBox.open();
       },
-      openBasicPoly: function(e) {
-        console.log('basic poly reached');
-        location.href="/poly"
+      profilePageGo: function(e) {
+        console.log('Profile page reached');
+        location.href="/profile";
       },
       googleLogin:function(e) {
-        location.href= '/auth/google'
+        location.href= '/auth/google';
       }
     })
   </script>

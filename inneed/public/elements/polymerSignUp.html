@@ -1,21 +1,60 @@
 <link rel="import" href="/polymer/polymer.html" />
 <link rel="import" href="/paper-checkbox/paper-checkbox.html" />
 <link rel="import" href="/iron-icon/iron-icon.html" />
+
+<!-- Allows Dropdown box to appear -->
+<link rel="import" href="/neon-animation/web-animations.html" />
+<link rel="import" href="/paper-item/paper-item.html" />
+<link rel="import" href="/paper-dropdown-menu/paper-dropdown-menu.html" />.
+<link rel="import" href="/paper-menu-button/paper-menu-button.html" />
+<link rel="import" href="/paper-menu/paper-menu.html" />
+<link rel="import" href="/gold-phone-input/gold-phone-input.html"
+<!--<link rel="import" href="/usa-state-list/usa-state-list.html">
+<link rel="import" href="/vaadin-combo-box-mixin/vaadin-combo-box-mixin.html">
+<link rel="import" href="/vaadin-combo-box-overlay/vaadin-combo-box-overlay.html">
+<link rel="import" href="/vaadin-combo-box-styles/vaadin-combo-box-styles.html">-->
+
 <!--<link rel="import" href="/paper-header-panel/paper-header-panel.html" />-->
 <link rel="import" href="/paper-input/paper-input.html" />
 
 <dom-module id="sign-up">
   <template>
-    <!-- request to the database to createUser -->
-    <iron-ajax
-      id="putUser"
-      url="/users"
-      handle-as="json"
-      on-response="updatedUser"
-      on-error="updateUserError"
-    ></iron-ajax>
-    <!-- possibly request to the database to updateUser -->
-    <style>
+    <div class="container" >
+      <!-- request to the database to createUser -->
+      <iron-ajax
+        id="putUser"
+        url="/users"
+        handle-as="json"
+        on-response="updatedUser"
+        on-error="updateUserError"
+      ></iron-ajax>
+      <!-- possibly request to the database to updateUser -->
+      
+      <!-- paper-header-panel is effectively the 
+          Polymer version of a div container -->
+      <iron-form>
+        <form method="PUT" action="/updateUser">
+          <paper-input value="Joe" label="Name" required="true"></paper-input>
+          <paper-input value="1991-01-13" label="Date of Birth" required="true" type="date" error-message="Invalid Input"></paper-input>
+          <paper-input value="123 Lard Avenue" label="Address" required="true"></paper-input>
+          <paper-input value="Lansing" label="City" required="true"></paper-input>
+          <paper-input value="Michigan" label="State" required="true"></paper-input>
+          <paper-input value="48154" label="Zip Code" required="true" char-counter maxlength="5" auto-validate pattern="[0-9]*" error-message="Numbers only!"></paper-input>
+          <paper-input value="717-999-6595" label="Phone Number" auto-validate allowed-pattern="[0-9\-]"></paper-input>
+          <!-- Attempted a State Dropdown list; Didnt work -->
+          <!--<paper-dropdown-menu label="State" on-iron-select="" role="combobox" aria-haspopup="true" aria-autocomplete="none" aria-disabled="false">
+            <paper-listbox slot="dropdown-content" selected="1" aria-expanded="false" role="listbox" tabindex="0">
+              <paper-item role="option" tabindex="0" aria-disabled="false">Alabama</paper-item>
+              <paper-item role="option" tabindex="-1" aria-disabled="false">Arkansas</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>-->
+          <button type="submit" id="submit">submit!</button>
+            <!-- -->
+        </form>
+      <iron-form>
+    </div>
+  </template>
+  <style>
       /* local styles go here */
       :host {
         display: inline-block;
@@ -27,46 +66,19 @@
       :host([pressed]) iron-icon {
         fill: currentcolor;
       }
-      #container {
+      #submit {
         display: flex;
       }
-      paper-button {
-        font-family: 'Roboto', 'Noto', sans-serif;
-        font-weight: normal;
-        font-size: 14px;
-        -webkit-font-smoothing: antialiased;
-      }   
-      paper-button.green {
-        background-color: var(--paper-green-500);
-        color: white;
+      .container{
+      margin: 3em auto;
+      width: 110%;
+      /* 	font-family: 'Aref Ruqaa', serif; */
+      font-family: 'Ubuntu', sans-serif;
+      /* font-family: 'Lato', sans-serif; */
+      font-family: 'Source Sans Pro', sans-serif;
+      margin: 0 auto;
       }
-      paper-button.green[active] {
-        background-color: var(--paper-red-500);
-      }
-    </style>
-    <!-- paper-header-panel is effectively the 
-         Polymer version of a div container -->
-    <iron-form>
-      <form method="PUT" action="/createUser">
-        <paper-input label="name"></paper-input>
-        <div id="container">
-          <paper-button
-            raised class="green" onclick="submitForm" />
-              Submit
-          </paper-button>
-          
-        </div>  
-      </form>
-    </iron-form>
-    <!--<div>
-      Name: <input type="text" name="fullName" />
-      <input type="submit" value="submit" /> 
-    </div>-->
-    <!-- local DOM goes here d-->
-    <!--<span>Please work</span>
-    <iron-icon icon="polymer">/</iron-icon>-->
-  </template>
-
+  </style>
   <script>
     Polymer({
       is: 'sign-up',
