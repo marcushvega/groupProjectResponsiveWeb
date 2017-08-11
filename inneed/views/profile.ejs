@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			body{background: skyblue; font-family: Verdana; color:#fff; padding: 30px;}
+			h1{font-size: 48px; text-transform: uppercase; letter-spacing: 2px; text-align: center;}
+			h2{font-size: 36px; text-transform: uppercase; letter-spacing: 2px; text-align: center;}
+			p{font-size: 16px; text-align: center;}
+		</style>
+	</head>
+	<body>
+		<h1>Profile Page</h1> 
+		<p>Name: <%= user.name %></p>
+		<p>Email: <%= user.email %></p>
+		<!--<p>Date of Birth: <%= user.dob%></p>-->
+
+		<form action="/logout">
+			<button type="submit">Log Out</button>
+		</form>
+		<form action="/">
+			<button type="submit">Main Page</button>
+		</form>
+		<!--<form action="/updateProfile">
+			<button action="submit">Update Profile</button>
+		</form>-->
+	</body>
+</html>
