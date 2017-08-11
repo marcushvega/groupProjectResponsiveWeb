@@ -4,7 +4,7 @@ var router = express.Router();
 
 var Job = require('../models/jobs.js');
 
-// router.post('/jobs', function(req, res, next) {
+// router.post('/', function(req, res, next) {
 //     console.log(req.body);
 //     var job = new Jobs(req.body.job);
 

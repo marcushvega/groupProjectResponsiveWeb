@@ -16,6 +16,9 @@ var app = express();
 var port  = process.env.PORT || 3000;
 // var views = path.join(__dirname, 'views');
 
+// enables use of template engine ejs
+app.set('view engine', 'ejs');
+
 //REQUIRED for mongoose
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/test');
@@ -23,6 +26,16 @@ mongoose.connect('mongodb://localhost:27017/test');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+var hasStorage = (function() {
+	try {
+		localStorage.setItem(mod, mod);
+		localStorage.removeItem(mod);
+		return true;
+	} catch (exception) {
+		return false;
+	}
+}());
 
 app.use(require('express-session')({
   secret: 'keyboard cat',
@@ -65,15 +78,24 @@ app.get('/',function(req,res,next){
 
 // REQUIRED for sign-up page access
 // route for signup form
-app.get('/sign-up', function(req, res, next){
-  console.log(__dirname)
+app.get('/newUser', function(req, res, next){
+  // var user = {name: req.user.name}
+  // console.log(__dirname)
   res.sendFile(path.join(__dirname, '/public/signUpPage.html'));
+  // res.render(path.join(__dirname, 'welcomeUser.ejs', {user: user}));
 });
 
 // REQUIRED for profile page access
-app.get('/profile',function(req,res,next){
-  console.log(__dirname)
-  res.sendFile(path.join(__dirname, '/public/profilePage.html'));
+// app.get('/profile',function(req,res,next){
+//   console.log(__dirname)
+//   res.sendFile(path.join(__dirname, '/public/profilePage.html'));
+// });
+
+app.get('/profile', isLoggedIn, function(req, res) {
+  var user = {name: req.user.name, email: req.user.email};
+  res.render('profile.ejs', { user: user });  
+  // res.render('/public/profilePage', { user: req.user });
+  // res.sendFile(path.join(__dirname, '/public/profilePage.html'), { user: user });
 });
 
 
@@ -99,29 +121,38 @@ app.get('/jobs', function(req, res, next){
 //  Finds job based on companyName
 app.get('/jobs/:companyName', function(req, res, next){
   console.log("getting one job with companyName " + req.params.companyName);
-  Job.findOne({companyName: req.params.companyName}, function(err, user){
+  Job.findOne({companyName: req.params.companyName}, function(err, job){
     if(err){
       return res.send(err);
     }
-    console.log(user);
-    res.json(user);
+    console.log(job);
+    res.json(job);
   })
 });
+
+// Sends user to page to  submit resume for a job for (companyName)
+// 
+app.get('/apply',isLoggedIn, function(req, res) {
+  console.log("req.user: "+ req.user)
+  var user = {name: req.user.name};
+  res.render('apply.ejs', { user: user });  
+
+})
 
 // Sends GET request for ONE job in the database
 //  Finds job based on _id 
 //  Apparently url must be different if more than one Model.findOne exists ?
 //  See pattern between this findOne (_id) and the last findOne (companyName) ?
-app.get('/jobsById/:id', function(req, res, next){
-  console.log("getting one job with _id " + req.params.id);
-  Job.findOne({_id: req.params.id}, function(err, user){
-    if(err){
-      return res.send(err);
-    }
-    console.log(user);
-    res.json(user);
-  })
-});
+// app.get('/jobsById/:id', function(req, res, next){
+//   console.log("getting one job with _id " + req.params.id);
+//   Job.findOne({_id: req.params.id}, function(err, user){
+//     if(err){
+//       return res.send(err);
+//     }
+//     console.log(user);
+//     res.json(user);
+//   })
+// });
 
 // POST function
 // Postman needs to send RAW JSON data
@@ -157,6 +188,7 @@ app.delete('/deleteJob/:id', function(req, res, next) {
     })
 
 });
+
 
 //--------------------------------------------\
 //-----------PUT function not working---------\
@@ -206,14 +238,16 @@ var User = require('./models/users');
 
 // sends GET request for all the users in the database
 app.get('/users', function(req, res, next){
+  var user = {name: req.user.name, email: req.user.email}
+  console.log("user: ", req.user._id);
   //             'users' represents the users.js in ./models
-  mongoose.model('users').find(function(err, users){
+  // mongoose.model('users').find(function(err, users){
 
-    if (err){
-        res.redirect('/');
-    }
-    res.json(users);
-  });
+  //   if (err){
+  //       res.redirect('/');
+  //   }
+    res.json(gid);
+  // });
 });
 
 // Sends GET request for ONE user in the database
@@ -301,22 +335,28 @@ app.get('/logout', function(req, res) {
 // profile gets us their basic information including their name
 // email gets their emails
 app.get('/auth/google', passport.authenticate('google', {
-    scope: ['profile', 'email']
+    scope: ['profile', 'email'],
 }));
 
 // the callback after google has authenticated the user
 app.get('/auth/google/callback', passport.authenticate( 'google', {
         successRedirect: '/profile',
-        failureRedirect: '/sign-up'
-    }));
+        failureRedirect: '/newUser'
+    }), );
+
+// Multiple request handlers to get profile information 
+//
+// https://stackoverflow.com/questions/20340268/get-request-object-in-passport-strategy-callback
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
 
     // if user is authenticated in the session, carry on
     if (req.isAuthenticated()){
+        console.log("Here is the request: " + req.toString());
         return next();
     }
+
 
     // if user is not authenticated in the session,
     //  redirect user to the home page
@@ -325,3 +365,4 @@ function isLoggedIn(req, res, next) {
 app.listen(port);
 console.log(`running on ${port}`);
 
+module.exports = hasStorage;

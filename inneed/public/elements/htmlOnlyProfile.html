@@ -2,58 +2,77 @@
 <>-->
 <link rel="import" href="/polymer/polymer.html">
 <link rel="import" href="/iron-ajax/iron-ajax.html">
+<link rel="import" href="/google-signin/google-signin.html">
+<google-signin-aware scopes="https://www.googleapis.com/auth/drive"></google-signin-aware>
 <dom-module id='user-profile'>
   <template>
-<!--<body class="loading">
+    <!--<body class="loading">
   <header>
-    <h1> Job Profile</h1>
+    <h1> User Profile</h1>
   </header>-->
-   <iron-ajax
-      auto
-      id="getUsersFromDatabase"
-      url="/users"
-      handle-as="json"
-      on-response="userProfileData"
-      on-error="userRetrivalError"
-      ></iron-ajax>
-<!--
+    <iron-ajax auto id="getUsersFromDatabase" handle-as="json" url="/users" on-response="userProfileData" on-error="userRetrivalError"></iron-ajax>
+
+    <google-signin-aware scopes="https://www.googleapis.com/auth/drive" offline on-google-signin-aware-success="handleSignin"
+      on-google-signin-offline-success="handleOffline"></google-signin-aware>
+    <!--
   <inneed-app></inneed-app>-->
     <!-- Need to PUT all this based on _id or email from the mongodb -->
 
     <!-- displayName -->
-    <h3>Name: </h3> <div>{{users.name}}</div>
+    <h3>Name: {{user.name}} </h3>
+    <p> {{req.user.name}} </p>
+
 
     <!-- dateOfBirth -->
-    <h3>Date of Birth</h3>
+    <h3>Date of Birth: never</h3>
 
     <!-- email -->
-    <h3>Email Address</h3>
+    <h3>Email Address:</h3>
+
 
     <form action="/logout">
-      <button type="submit">Submit</button>
+      <button type="submit">LOG OUT</button>
     </form>
-<!--</body>
+    <!--</body>
 <style>-->
   </template>
-    <script>
+  <script>
     Polymer({
-      is:'user-profile',
-      properties:{
-          users:{
+      is: 'user-profile',
+      properties: {
+        users: {
           type: Object
         }
       },
-      userProfileData: function(event){
+      userProfileData: function (event) {
+        console.log("userProfileData ran");
         var list = event.detail.response
-          this.users = list[list.length-1] ;
-          console.log(this.users)
+        // this.users = list[list.length - 1];
+        this.users = list[list.length - 1];
+        console.log("user ID", this.users._id);
+        this.$.users.url = `/users/${this.users._id}`;
+        this.$.users.generateRequest();
       },
 
-      userRetrivalError: function(){
+      userRetrivalError: function () {
         console.log("Darn it")
       }
 
+      
+
+      //     var aware = document.querySelector('#awareness');
+      // aware.handleSignin = function(response) {
+      //   var user = gapi.auth2.getAuthInstance()['currentUser'].get();
+      //   console.log('User name: ' + user.getBasicProfile().getName());
+      // };
+      // aware.handleOffline = function(response) {
+      //   console.log('Offline code received: ' + response.detail.code);
+      //   // Here you would POST response.detail.code to your webserver, which can
+      //   // exchange the authorization code for an access token. More info at:
+      //   // https://developers.google.com/identity/protocols/OAuth2WebServer
+      // };
+
 
     })
-      </script>
-  </dom-module>
+  </script>
+</dom-module>
